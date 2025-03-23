@@ -27,7 +27,7 @@ Before you begin, ensure you have the following installed:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/expo-nativewind-template.git
+   git clone https://github.com/daft2/expo-nativewind-template.git
    cd expo-nativewind-template
    ```
 
