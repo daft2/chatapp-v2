@@ -1,5 +1,5 @@
-import { Stack } from "expo-router";
 import "react-native-gesture-handler";
+import { Stack } from "expo-router";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../store";
@@ -23,7 +23,12 @@ export default function RootLayout() {
       <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
-            <Stack screenOptions={{ headerShown: false }} />
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                gestureEnabled: false,
+              }}
+            />
           </AuthProvider>
         </QueryClientProvider>
       </PersistGate>

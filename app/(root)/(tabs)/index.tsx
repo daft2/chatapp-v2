@@ -5,10 +5,8 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
-  ActivityIndicator,
   RefreshControl,
   useWindowDimensions,
-  StatusBar,
 } from "react-native";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../store";
@@ -32,7 +30,7 @@ import {
 import type { Chat } from "../../../store/slices/chatSlice";
 import type { User } from "../../../store/slices/userSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Redirect, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 
 const HomeScreen = () => {
   const router = useRouter();
@@ -46,7 +44,7 @@ const HomeScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchRecentData = async () => {
-    if (!user) return router.push("/sign-in");
+    if (!user) return;
 
     try {
       // Fetch recent chats
@@ -87,8 +85,6 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    if (!user) return;
-
     fetchRecentData();
   }, [user, allUsers]);
 
@@ -126,7 +122,7 @@ const HomeScreen = () => {
   const renderChatItem = ({ item }: { item: Chat }) => {
     const otherUser = getOtherUser(item);
     if (!otherUser) return null;
-
+    console.log(otherUser);
     return (
       <TouchableOpacity
         className="flex-row items-center p-4 bg-white rounded-xl shadow-sm mb-2"
@@ -135,8 +131,8 @@ const HomeScreen = () => {
         }
       >
         <View className="w-12 h-12 rounded-full bg-blue-100 items-center justify-center">
-          <Text className="text-blue-600 font-bold text-lg">
-            {otherUser.displayName.charAt(0).toUpperCase()}
+          <Text className="font-bold text-lg text-black">
+            {otherUser.email.charAt(0).toUpperCase()}
           </Text>
         </View>
 
@@ -194,14 +190,6 @@ const HomeScreen = () => {
       </TouchableOpacity>
     );
   };
-
-  if (loading) {
-    return (
-      <View className="flex-1 items-center justify-center bg-gray-50">
-        <ActivityIndicator size="large" color="#3b82f6" />
-      </View>
-    );
-  }
 
   return (
     <ScrollView
