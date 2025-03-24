@@ -33,12 +33,13 @@ import {
 import { db } from "../../../config/firebase";
 import { useAuth } from "../../../contexts/AuthContext";
 import { format } from "date-fns";
-import { Send, Video } from "lucide-react-native";
 import NetInfo from "@react-native-community/netinfo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter, useLocalSearchParams } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 const ChatScreen = () => {
   const router = useRouter();
@@ -56,7 +57,7 @@ const ChatScreen = () => {
   const [pendingMessages, setPendingMessages] = useState<Message[]>([]);
 
   const messages = useSelector(
-    (state: RootState) => state.chat.messages[chatId] || []
+    (state: RootState) => state.chat.messages[chatId] ?? []
   );
   const flatListRef = useRef<FlatList>(null);
   const appStateRef = useRef(AppState.currentState);
@@ -311,8 +312,6 @@ const ChatScreen = () => {
       pathname: "/video-call",
       params: {
         chatId,
-        userId,
-        userName,
       },
     });
   };
@@ -418,7 +417,7 @@ const ChatScreen = () => {
             className="p-2 bg-blue-500 rounded-full mr-2"
             onPress={startVideoCall}
           >
-            <Video size={24} color="#ffffff" />
+            <FontAwesome5 name="video" size={24} color="#ffffff" />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -426,7 +425,7 @@ const ChatScreen = () => {
             onPress={sendMessage}
             disabled={!text.trim()}
           >
-            <Send size={24} color="#ffffff" />
+            <FontAwesome name="send" size={24} color="#ffffff" />
           </TouchableOpacity>
         </View>
       </View>

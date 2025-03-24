@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../../store";
 import { setChats, type Chat } from "../../../store/slices/chatSlice";
@@ -21,8 +20,8 @@ import { db } from "../../../config/firebase";
 import { useAuth } from "../../../contexts/AuthContext";
 import { formatDistanceToNow } from "date-fns";
 import type { User } from "../../../store/slices/userSlice";
-import { MessageCircle } from "lucide-react-native";
 import { useRouter } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 
 const ChatsScreen = () => {
   const router = useRouter();
@@ -137,7 +136,8 @@ const ChatsScreen = () => {
 
   const EmptyComponent = () => (
     <View className="flex-1 items-center justify-center p-8">
-      <MessageCircle size={48} color="#3b82f6" />
+      <Feather name="message-circle" size={48} color="#3b82f6" />
+
       <Text className="text-lg text-gray-600 text-center mt-4">
         No chats yet
       </Text>
