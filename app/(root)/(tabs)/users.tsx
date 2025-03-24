@@ -20,9 +20,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../config/firebase";
 import { useAuth } from "../../../contexts/AuthContext";
-import { Search } from "lucide-react-native";
 import { TextInput } from "react-native";
 import { useRouter } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 
 const UsersScreen = () => {
   const router = useRouter();
@@ -148,7 +148,7 @@ const UsersScreen = () => {
     <View className="flex-1 bg-white">
       <View className="p-4 border-b border-gray-200">
         <View className="flex-row items-center bg-gray-100 rounded-lg px-3 py-2">
-          <Search size={20} color="#6b7280" />
+          <Feather name="search" size={20} color="#6b7280" />
           <TextInput
             className="flex-1 ml-2 text-gray-800"
             placeholder="Search users..."

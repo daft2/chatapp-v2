@@ -21,16 +21,10 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../config/firebase";
 import { formatDistanceToNow } from "date-fns";
-import {
-  MessageCircle,
-  Video,
-  Users,
-  User as UserIcon,
-} from "lucide-react-native";
 import type { Chat } from "../../../store/slices/chatSlice";
 import type { User } from "../../../store/slices/userSlice";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 
 const HomeScreen = () => {
   const router = useRouter();
@@ -122,7 +116,7 @@ const HomeScreen = () => {
   const renderChatItem = ({ item }: { item: Chat }) => {
     const otherUser = getOtherUser(item);
     if (!otherUser) return null;
-    console.log(otherUser);
+
     return (
       <TouchableOpacity
         className="flex-row items-center p-4 bg-white rounded-xl shadow-sm mb-2"
@@ -213,23 +207,16 @@ const HomeScreen = () => {
         <View className="bg-white rounded-xl shadow-md p-4 flex-row justify-around">
           <TouchableOpacity className="items-center" onPress={navigateToChats}>
             <View className="w-12 h-12 rounded-full bg-blue-100 items-center justify-center mb-1">
-              <MessageCircle size={24} color="#3b82f6" />
+              <Feather name="message-circle" size={24} color="#3b82f6" />
             </View>
             <Text className="text-gray-800 text-xs">Chats</Text>
           </TouchableOpacity>
 
           <TouchableOpacity className="items-center" onPress={navigateToUsers}>
             <View className="w-12 h-12 rounded-full bg-purple-100 items-center justify-center mb-1">
-              <Users size={24} color="#8b5cf6" />
+              <Feather name="users" size={24} color="#8b5cf6" />
             </View>
             <Text className="text-gray-800 text-xs">Users</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity className="items-center">
-            <View className="w-12 h-12 rounded-full bg-green-100 items-center justify-center mb-1">
-              <Video size={24} color="#10b981" />
-            </View>
-            <Text className="text-gray-800 text-xs">Video Call</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -237,7 +224,7 @@ const HomeScreen = () => {
             onPress={navigateToProfile}
           >
             <View className="w-12 h-12 rounded-full bg-orange-100 items-center justify-center mb-1">
-              <UserIcon size={24} color="#f59e0b" />
+              <Feather name="user" size={24} color="#f59e0b" />
             </View>
             <Text className="text-gray-800 text-xs">Profile</Text>
           </TouchableOpacity>
@@ -282,7 +269,7 @@ const HomeScreen = () => {
           ))
         ) : (
           <View className="bg-white rounded-xl p-6 items-center justify-center">
-            <MessageCircle size={40} color="#d1d5db" />
+            <Feather name="message-circle" size={40} color="#d1d5db" />
             <Text className="text-gray-500 mt-2 text-center">
               No recent chats
             </Text>
