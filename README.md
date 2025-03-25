@@ -4,7 +4,7 @@ A real-time chat and video calling application built with React Native and Expo.
 
 ## Demo
 
-[![Demo Video](https://github.com/daft/chatapp-v2/demo/demo.mov)
+[![Demo Video](https://github.com/daft/chatapp-v2/demo/thumbnail.png)](https://github.com/daft/chatapp-v2/demo/demo.mov)
 
 ## Features
 
