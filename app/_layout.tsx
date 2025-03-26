@@ -6,6 +6,7 @@ import { store, persistor } from "../store";
 import { AuthProvider } from "../contexts/AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./global.css";
+import { AgoraProvider } from "@/contexts/AgoraContext";
 
 // Initialize QueryClient
 const queryClient = new QueryClient({
@@ -23,12 +24,14 @@ export default function RootLayout() {
       <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                gestureEnabled: false,
-              }}
-            />
+            <AgoraProvider>
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  gestureEnabled: false,
+                }}
+              />
+            </AgoraProvider>
           </AuthProvider>
         </QueryClientProvider>
       </PersistGate>

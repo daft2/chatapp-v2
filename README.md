@@ -35,17 +35,20 @@ A real-time chat and video calling application built with React Native and Expo.
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd chatapp-v2
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create `.env` file and add your configuration:
+
 ```
 EXPO_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
 EXPO_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id
@@ -54,6 +57,7 @@ EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
 EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 EXPO_PUBLIC_FIREBASE_URL=your_firebase_url
 EXPO_PUBLIC_AGORA_APP_ID=your_agora_app_id
+EXPO_PUBLIC_AGORA_TOKEN=your_temporary_agora_token
 ```
 
 ## Development
